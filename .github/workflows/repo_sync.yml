@@ -10,13 +10,13 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: 获取本地仓库
+        uses: actions/checkout@master
+      - name: 同步文件
+        uses: kbrashears5/github-action-file-sync@v2.2.0
         with:
-          persist-credentials: false
-      - name: repo-sync
-        uses: repo-sync/github-sync@v2
-        with:
-          source_repo: "https://github.com/LXK9301/jd_scripts.git"
-          source_branch: "master"
-          destination_branch: "master"
-          github_token: ${{secrets.PAT}}
+          REPOSITORIES: |
+            LXK9301/jd_scripts@master
+          FILES: |
+            serverless.yml
+          TOKEN: ${{ secrets.PAT }}
