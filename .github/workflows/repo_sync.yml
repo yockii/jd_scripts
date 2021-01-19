@@ -1,0 +1,22 @@
+# File: .github/workflows/repo-sync.yml
+name: sync-scripts
+on:
+  schedule:
+    - cron: '1 0,15 * * *'
+  workflow_dispatch:
+  repository_dispatch:
+    types: sync-scripts
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: repo-sync
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: "https://github.com/LXK9301/jd_scripts.git"
+          source_branch: "master"
+          destination_branch: "master"
+          github_token: ${{secrets.PAT}}
