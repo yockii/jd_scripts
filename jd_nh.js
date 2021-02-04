@@ -8,6 +8,7 @@
 京东年货节
 用5000金币开盲盒必中200-300京豆，任务做完每天1000，5天换一次
 活动时间：2021年1月9日-2021年2月9日
+活动入口：https://lzdz-isv.isvjcloud.com/dingzhi/vm/template/activity/940531?activityId=dzvm210168869301
 已支持IOS双京东账号,Node.js支持N个京东账号
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 ============Quantumultx===============
@@ -33,7 +34,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //const WebSocket = $.isNode() ? require('websocket').w3cwebsocket: SockJS;
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message,helpInfo;
-let shareUuid = '83c6d4a80e3447b78572124e1fc3aa7c'
+let shareUuid = '65ad382567124c378baa259f958dd87b'
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
