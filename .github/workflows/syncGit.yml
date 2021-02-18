@@ -1,5 +1,4 @@
-# File: .github/workflows/repo-sync.yml
-name: sync-LXK9301-scripts
+name: sync-danwangshi-scripts
 on:
   schedule:
     - cron: '1 0,15 * * *'
@@ -9,7 +8,7 @@ on:
   push:
     branches: [ master ]
   repository_dispatch:
-    types: sync-LXK9301-scripts
+    types: sync-lxk0301-scripts
 jobs:
   repo-sync:
     env:
@@ -22,20 +21,20 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync LXK9301-scripts
+      - name: sync danwangshi-scripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://gitee.com/lxk0301/jd_scripts.git"
-          source_branch: "master"
-          destination_branch: "master"
+          source_repo: "https://gitee.com/danwangshimoluo/jdTools.git"
+          source_branch: "JdScripts"
+          destination_branch: "main"
           github_token: ${{ secrets.PAT }}
       # 我自己同步到gitee使用，其他人可忽略
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master
         if: env.dst_key
         with:
-          src: github/LXK9301
+          src: github/lxk0301
           dst: gitee/lxk0301
           static_list: "jd_scripts"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
